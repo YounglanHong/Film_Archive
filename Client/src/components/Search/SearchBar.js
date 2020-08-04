@@ -5,17 +5,20 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 export default function SearchBar(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="SearchBar">
-      <InputBase
-        placeholder="Search Movies"
-        value={props.query}
-        onChange={props.handleSearchInput}
-      />
-      <IconButton type="submit" onClick={props.handleSearchSubmit}>
-        <SearchIcon />
-      </IconButton>
+      <div className="search_bar">
+        <InputBase
+          placeholder="Search Movies"
+          value={props.query}
+          onChange={props.handleSearchInput}
+        />
+        <div className="search_bar_line"></div>
+        <IconButton type="submit" onClick={props.handleSearchSubmit}>
+          <SearchIcon />
+        </IconButton>
+      </div>
     </div>
   );
 }

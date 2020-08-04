@@ -4,6 +4,8 @@ import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 import { API_KEY, API_URL, IMAGE_URL } from "../../config";
 
+import "../../styles/search.css";
+
 export default function Search() {
   let [query, setQuery] = useState("");
   let [results, setResults] = useState("");
@@ -46,7 +48,6 @@ export default function Search() {
 
   return (
     <div className="Search">
-      search
       <SearchBar
         query={query}
         handleSearchInput={handleSearchInput}
