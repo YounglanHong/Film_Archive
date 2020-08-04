@@ -1,0 +1,21 @@
+.Movie {
+  margin: 100px;
+}
+
+.list_items {
+  margin: 10px;
+}
+
+.list_image {
+  border-radius: 5px;
+}
+
+/* Home */
+.movie_list {
+  margin: 30px;
+}
+.movie_list_items {
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+}
