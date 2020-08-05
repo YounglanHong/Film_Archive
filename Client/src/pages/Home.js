@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { API_KEY, API_URL, IMAGE_URL } from "../config";
+
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import "../styles/movie.css";
 
@@ -14,6 +17,26 @@ export default function Home(props) {
   let [popular, setPopular] = useState("");
   let [topRated, setTopRated] = useState("");
   let [nowPlaying, setNowPlaying] = useState("");
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 9,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 7,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   useEffect(() => {
     // api key로 인기 영화 리스트 요청
@@ -71,48 +94,60 @@ export default function Home(props) {
   // popularMovies 결과값 매핑
   function popularResultMap(popularMovies) {
     // 응답받은 검색값 존재하는 경우
-    if (popularMovies) {
-      return popularMovies.map((popularMovie, i) => {
-        return <PopularList popularMovie={popularMovie} key={i} />;
-      });
-    }
+    return (
+      <Carousel responsive={responsive}>
+        {popularMovies
+          ? popularMovies.map((popularMovie, i) => {
+              return <PopularList popularMovie={popularMovie} key={i} />;
+            })
+          : ""}
+      </Carousel>
+    );
   }
 
   // topRatedMovies 결과값 매핑
   function topRatedResultMap(topRatedMovies) {
     // 응답받은 검색값 존재하는 경우
-    if (topRatedMovies) {
-      return topRatedMovies.map((topRatedMovie, i) => {
-        return <TopRatedList topRatedMovie={topRatedMovie} key={i} />;
-      });
-    }
+    return (
+      <Carousel responsive={responsive}>
+        {topRatedMovies
+          ? topRatedMovies.map((topRatedMovie, i) => {
+              return <TopRatedList topRatedMovie={topRatedMovie} key={i} />;
+            })
+          : ""}
+      </Carousel>
+    );
   }
 
   // nowPlayingMovies 결과값 매핑
   function nowPlayingResultMap(nowPlayingMovies) {
     // 응답받은 검색값 존재하는 경우
-    if (nowPlayingMovies) {
-      return nowPlayingMovies.map((nowPlayingMovie, i) => {
-        return <NowPlayingList nowPlayingMovie={nowPlayingMovie} key={i} />;
-      });
-    }
+    return (
+      <Carousel responsive={responsive}>
+        {nowPlayingMovies
+          ? nowPlayingMovies.map((nowPlayingMovie, i) => {
+              return (
+                <NowPlayingList nowPlayingMovie={nowPlayingMovie} key={i} />
+              );
+            })
+          : ""}
+      </Carousel>
+    );
   }
 
   return (
     <div className="Home">
       <div className="movie_list">
+        <h2>NowPlaying Movies</h2>
+        {nowPlayingResultMap(nowPlaying)}
+      </div>
+      <div className="movie_list">
         <h2>Popular Movies</h2>
-        <span className="movie_list_items">{popularResultMap(popular)}</span>
+        {popularResultMap(popular)}
       </div>
       <div className="movie_list">
         <h2>Top Rated Movies</h2>
-        <span className="movie_list_items">{topRatedResultMap(topRated)}</span>
-      </div>
-      <div className="movie_list">
-        <h2>NowPlaying Movies</h2>
-        <span className="movie_list_items">
-          {nowPlayingResultMap(nowPlaying)}
-        </span>
+        {topRatedResultMap(topRated)}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function PopularList(props) {
 
   return (
     <div className="PopularList">
-      <div className="list_items">
+      <li className="list_item">
         <Link
           to={{
             pathname: `/movie/${id}/${title}`,
@@ -27,9 +27,9 @@ export default function PopularList(props) {
             src={`${IMAGE_URL}w200/${poster_path}`}
             alt="poster image"
           />
-          <h3>{title}</h3>
+          <h4>{title}</h4>
         </Link>
-      </div>
+      </li>
     </div>
   );
 }
