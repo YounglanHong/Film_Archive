@@ -22,8 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const PORT = 5000;
-
 app.get("/", (req, res) => {
   res.send("hello world");
 });
@@ -38,7 +36,7 @@ app.post("/api/users/register", (req, res) => {
     if (err) {
       return res.json({ success: false, err });
     }
-    return res.status(200).json({ sucess: true });
+    return res.status(200).json({ success: true });
   });
 });
 
@@ -100,10 +98,13 @@ app.get("/api/users/logout", auth, (req, res) => {
     { token: "" },
     (err, user) => {
       if (err) return res.json({ success: false, err });
-      return res.status(200).send({ sucess: true });
+      return res.status(200).send({ success: true });
     }
   );
 });
+
+// Set production & development mode PORT
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`app is listening in PORT ${PORT}`);
