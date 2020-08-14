@@ -1,13 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 
-import Home from "../pages/Home";
+import { signOut } from "../action/signoutAction";
+
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import "../styles/header.css";
 
 import NavBar from "./NavBar";
 
-export default function Header(props) {
+function Header(props) {
+  const dispatch = useDispatch();
+  console.log(props);
+
+  function handleSignOut(e) {
+    // 새로고침 방지
+    e.preventDefault();
+
+    dispatch(signOut()).then((res) => {
+      console.log(res);
+      /* payload: {success: true}
+       type: "SIGN_OUT" */
+      if (res.payload.success) {
+        props.history.push("/signout");
+      } else {
+        props.history.push("/signin");
+      }
+    });
+  }
   return (
     <div className="Header">
       <div className="header_top"></div>
@@ -17,9 +38,15 @@ export default function Header(props) {
             <img className="header_logo" src="video_yellow.png" alt="film" />
           </Link>
           <Link to="/" className="link">
-            <h1>Film Archive</h1>
+            <h1 className="header_title">Film Archive</h1>
           </Link>
-          <div>Sign In</div>
+
+          <Link to="/signin" className="link">
+            Sign In
+          </Link>
+          <Link to="signout">
+            <ExitToAppIcon onClick={handleSignOut} />
+          </Link>
         </div>
       </div>
       <NavBar />
@@ -27,3 +54,5 @@ export default function Header(props) {
     </div>
   );
 }
+
+export default withRouter(Header);
