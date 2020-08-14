@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn } from "../action/signinAction";
 
+import { Link } from "react-router-dom";
+
 import "../styles/signin.css";
 
 export default function SignIn(props) {
@@ -9,6 +11,8 @@ export default function SignIn(props) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  console.log(props);
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -38,7 +42,7 @@ export default function SignIn(props) {
       if (res.payload.loginSuccess) {
         props.history.push("/");
       } else {
-        alert("Error");
+        alert("이메일과 비밀번호를 확인해주세요");
       }
     });
   }
@@ -56,6 +60,16 @@ export default function SignIn(props) {
           <br />
 
           <button type="submit">SignIn</button>
+
+          <hr />
+          <div>
+            <p>New to Film Archive?</p>
+            <button>
+              <Link to="/signup" className="link">
+                Create an Acount
+              </Link>
+            </button>
+          </div>
         </form>
       </div>
     </div>
