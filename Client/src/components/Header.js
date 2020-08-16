@@ -1,36 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
-import { signOut } from "../action/signoutAction";
+import { auth } from "../action/authAction";
 
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Account from "./Account";
+import NavBar from "./NavBar";
 
 import "../styles/header.css";
 
-import NavBar from "./NavBar";
-
 function Header(props) {
   const dispatch = useDispatch();
+
+  let [isAuth, setIsAuth] = useState(false);
   console.log(props);
 
-  function handleSignOut(e) {
-    // 새로고침 방지
-    e.preventDefault();
-
-    dispatch(signOut()).then((res) => {
-      console.log(res);
-      /* payload: {success: true}
-       type: "SIGN_OUT" */
-      if (res.payload.success) {
-        props.history.push("/signout");
-      } else {
-        props.history.push("/signin");
+  useEffect(() => {
+    dispatch(auth()).then((res) => {
+      if (res.payload.isAuth) {
+        setIsAuth(true);
       }
     });
-  }
+  });
+
   return (
     <div className="Header">
+      {/* {console.log(isAuth)} */}
       <div className="header_top"></div>
       <div className="header_items">
         <div className="header_item">
@@ -40,13 +35,7 @@ function Header(props) {
           <Link to="/" className="link">
             <h1 className="header_title">Film Archive</h1>
           </Link>
-
-          <Link to="/signin" className="link">
-            Sign In
-          </Link>
-          <Link to="signout">
-            <ExitToAppIcon onClick={handleSignOut} />
-          </Link>
+          <Account isAuth={isAuth} />
         </div>
       </div>
       <NavBar />
@@ -55,4 +44,20 @@ function Header(props) {
   );
 }
 
+// const mapStateToProps = (state) => {
+//   console.log(state);
+
+//   return {
+//     isAuth: state.auth.userData.isAuth,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     auth: () => dispatch(auth()),
+//   };
+// };
+
 export default withRouter(Header);
+
+// export default withRouter(connect(mapDispatchToProps)(Header));
