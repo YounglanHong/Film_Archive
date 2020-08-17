@@ -13,12 +13,18 @@ function Header(props) {
   const dispatch = useDispatch();
 
   let [isAuth, setIsAuth] = useState(false);
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+
   console.log(props);
 
   useEffect(() => {
     dispatch(auth()).then((res) => {
+      console.log(res);
       if (res.payload.isAuth) {
         setIsAuth(true);
+        setName(res.payload.name);
+        setEmail(res.payload.email);
       }
     });
   });
@@ -35,7 +41,7 @@ function Header(props) {
           <Link to="/" className="link">
             <h1 className="header_title">Film Archive</h1>
           </Link>
-          <Account isAuth={isAuth} />
+          <Account isAuth={isAuth} name={name} email={email} />
         </div>
       </div>
       <NavBar />
@@ -44,20 +50,4 @@ function Header(props) {
   );
 }
 
-// const mapStateToProps = (state) => {
-//   console.log(state);
-
-//   return {
-//     isAuth: state.auth.userData.isAuth,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     auth: () => dispatch(auth()),
-//   };
-// };
-
 export default withRouter(Header);
-
-// export default withRouter(connect(mapDispatchToProps)(Header));

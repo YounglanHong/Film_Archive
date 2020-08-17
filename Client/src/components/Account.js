@@ -9,7 +9,6 @@ import AccountIcon from "@material-ui/icons/AccountCircleOutlined";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import "../styles/account.css";
 
@@ -18,9 +17,10 @@ function Account(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   // console.log(props);
-  // Header로부터 받는 props(isAuth)
-  const { isAuth } = props;
+  // Header로부터 받는 props(isAuth, name, email)
+  const { isAuth, email, name } = props;
   console.log(isAuth);
+  console.log(name, email);
 
   function handleMenuClick(e) {
     setAnchorEl(e.currentTarget);
@@ -44,6 +44,8 @@ function Account(props) {
         props.history.push("/signin");
       }
     });
+    // Menu 창 닫기
+    setAnchorEl(null);
   }
 
   return (
@@ -56,24 +58,42 @@ function Account(props) {
         <AccountIcon className="account_logo" />
       </Button>
       <Menu
-        id="simple-menu"
+        id="account_menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>
-          <Link to="/signin" className="link">
-            Sign In
-          </Link>
-        </MenuItem>
-        {isAuth ? <MenuItem onClick={handleMenuClose}>Mypage</MenuItem> : ""}
-        <hr />
-        <MenuItem onClick={handleMenuClose}>
-          <Link to="signout">
-            <ExitToAppIcon onClick={handleSignOut} />
-          </Link>
-        </MenuItem>
+        {/* {isAuth ? <MenuItem onClick={handleMenuClose}>Mypage</MenuItem> : ""} */}
+        {!isAuth ? (
+          <MenuItem onClick={handleMenuClose}>
+            <Link to="/signin" className="link">
+              Sign In
+            </Link>
+          </MenuItem>
+        ) : (
+          <div className="account_item">
+            <MenuItem>
+              <div className="account_user">
+                <div className="account_name">{name}</div>
+                <div className="account_email">{email}</div>
+              </div>
+            </MenuItem>
+            <MenuItem>
+              <Link className="link">User Settings</Link>
+            </MenuItem>
+            {/* <hr /> */}
+
+            <MenuItem
+              onClick={handleSignOut}
+              style={{ backgroundColor: "rgb(226, 226, 226)" }}
+            >
+              <Link to="/signout" className="link">
+                Sign Out
+              </Link>
+            </MenuItem>
+          </div>
+        )}
       </Menu>
     </div>
   );
