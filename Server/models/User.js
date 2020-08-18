@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
+const secretKey = require("../config/secretKey");
 
 const userSchema = mongoose.Schema({
   name: {
@@ -24,7 +25,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: Number,
-    default: 0, // normal user
+    default: 0, // 일반 유저: 0, admin: 1
   },
   image: String,
   token: {
@@ -35,13 +36,13 @@ const userSchema = mongoose.Schema({
   },
 });
 
-// Encryption
+// 암호화(Encryption)
 userSchema.pre("save", function (next) {
   let user = this;
 
-  // Condition: Encrypt password only when password is modified
+  // [조건] 비밀번호가 변경되었을 경우
   if (user.isModified("password")) {
-    // Encrypt password(https://www.npmjs.com/package/bcrypt)
+    // 비밀번호 암호화 (https://www.npmjs.com/package/bcrypt)
     bcrypt.genSalt(saltRounds, function (err, salt) {
       if (err) return next(err);
 
@@ -56,20 +57,21 @@ userSchema.pre("save", function (next) {
   }
 });
 
+// 비밀번호 체크
 userSchema.methods.checkPassword = function (plainPassword, callback) {
-  // Encrypt plain password
-  // Compare with hashed password
-  bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
-    // if (err) return callback(err), callback(null, isMatch);
+  let user = this;
+  // 일반 비밀번호(plain password)를 암호화된 비밀번호(hashed password)와 비교
+  bcrypt.compare(plainPassword, user.password, function (err, isMatch) {
     if (err) return callback(err);
     callback(null, isMatch);
   });
 };
 
+// jwt 이용해서 token 생성
 userSchema.methods.createToken = function (callback) {
   let user = this;
-  // Create token using jwt
-  let token = jwt.sign(user._id.toHexString(), "filmArchive");
+  let token = jwt.sign(user._id.toHexString(), secretKey.secretKey);
+  /* user._id + secretKet = token */
   user.token = token;
   user.save(function (err, user) {
     if (err) return callback(err);
@@ -80,11 +82,11 @@ userSchema.methods.createToken = function (callback) {
 userSchema.statics.findByToken = function (token, callback) {
   let user = this;
 
-  // Decode token
+  // decode token
 
-  jwt.verify(token, "filmArchive", function (err, decoded) {
-    // Find user by userId
-    // Compare client token with DB stored token
+  jwt.verify(token, secretKey.secretKey, function (err, decoded) {
+    // user._id를 활용하여 user를 검색하고,
+    // 클라이언트에서 가져온 token 과 DB에 저장된 토큰이 일치하는지 확인
 
     user.findOne(
       {

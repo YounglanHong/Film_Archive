@@ -2,6 +2,7 @@
 
 #config
 dev.js
+secretKey.js
 
 # dependencies
 /node_modules
