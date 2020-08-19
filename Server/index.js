@@ -23,6 +23,7 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/users", require("./routes/users"));
+app.use("/api/movies", require("./routes/movies"));
 
 // production 모드와 development 모드 포드 설정
 const PORT = process.env.PORT || 5000;
