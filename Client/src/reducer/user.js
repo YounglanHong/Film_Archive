@@ -1,4 +1,6 @@
 import { AUTH_USER } from "../action/authAction";
+import { SIGN_IN } from "../action/signinAction";
+import { SIGN_UP } from "../action/signupAction";
 
 // let initialState = {
 //   email: "1@gmail.com",
@@ -13,6 +15,10 @@ export default function (state = {}, action) {
   switch (action.type) {
     case AUTH_USER:
       return { ...state, userData: action.payload };
+    case SIGN_IN:
+      return { ...state, loginSuccess: action.payload };
+    case SIGN_UP:
+      return { ...state, register: action.payload };
     default:
       return state;
   }
