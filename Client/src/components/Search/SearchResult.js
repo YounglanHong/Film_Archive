@@ -16,7 +16,8 @@ export default function SearchResult(props) {
     <div className="SearchResult">
       <Link
         to={{
-          pathname: `/movie/${id}/${title}`,
+          // pathname: `/movie/${id}/${title}`,
+          pathname: `/movie/${title}`,
           state: {
             id: id,
             title: title,
@@ -36,8 +37,8 @@ export default function SearchResult(props) {
         )}
         <h2>{title}</h2>
       </Link>
-      <div>{original_title}</div>
-      <div>{release_date}</div>
+      <p>{original_title}</p>
+      <p>{release_date}</p>
     </div>
   );
 }

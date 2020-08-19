@@ -6,7 +6,7 @@ import { IMAGE_URL } from "../../config";
 import "../../styles/movie.css";
 
 export default function PopularList(props) {
-  console.log(props);
+  // console.log(props);
   const { id, title, poster_path } = props.popularMovie;
 
   return (
@@ -14,7 +14,7 @@ export default function PopularList(props) {
       <li className="list_item">
         <Link
           to={{
-            pathname: `/movie/${id}/${title}`,
+            pathname: `/movie/${title}`,
             state: {
               id: id,
               title: title,
