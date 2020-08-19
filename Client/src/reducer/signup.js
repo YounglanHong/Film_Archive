@@ -6,7 +6,7 @@ let initialState = {
   password: "*****",
 };
 
-export default function signUp(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SIGN_UP:
       return { ...state, register: action.payload };

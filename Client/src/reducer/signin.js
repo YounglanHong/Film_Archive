@@ -5,7 +5,7 @@ let initialState = {
   password: "*****",
 };
 
-export default function signIn(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SIGN_IN:
       return { ...state, loginSuccess: action.payload };

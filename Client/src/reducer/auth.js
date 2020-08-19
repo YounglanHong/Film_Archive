@@ -9,7 +9,7 @@ import { AUTH_USER } from "../action/authAction";
 //   _id: "5f37afc1e69e433831bbe6b9"
 // };
 
-export default function auth(state = {}, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case AUTH_USER:
       return { ...state, userData: action.payload };
