@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -31,10 +31,10 @@ export default function NavBar() {
         <Link to="/search" className="navbar_item">
           Search
         </Link>
-        <Link to="/movie" className="navbar_item">
-          Movie
+        <Link to="/myMovie" className="navbar_item">
+          MyMovie
         </Link>
-        <Link to="/movie" className="navbar_item">
+        <Link to="/review" className="navbar_item">
           Review
         </Link>
       </div>
