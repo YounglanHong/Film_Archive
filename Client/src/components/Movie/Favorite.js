@@ -6,9 +6,10 @@ import React, { useState, useEffect } from "react";
 
 import "../../styles/movie.css";
 
-export default function WatchList(props) {
+export default function FavoriteList() {
   return (
-    <div className="WatchList">
+    <div className="FavoriteList">
+      <div>FavoriteList</div>
       {/* movie */}
       {/* <Search /> */}
     </div>
