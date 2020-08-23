@@ -11,7 +11,7 @@ export default function NowPlayingList(props) {
 
   return (
     <div className="NowPlayingList">
-      <li className="list_item">
+      <div className="list_item">
         <Link
           to={{
             pathname: `/movie/${title}`,
@@ -25,11 +25,11 @@ export default function NowPlayingList(props) {
           <img
             className="list_image"
             src={`${IMAGE_URL}w200/${poster_path}`}
-            alt="poster image"
+            alt="poster"
           />
           <h4>{title}</h4>
         </Link>
-      </li>
+      </div>
     </div>
   );
 }
