@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const watchedSchema = mongoose.Schema(
   {
-    userInfo: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
@@ -11,6 +11,9 @@ const watchedSchema = mongoose.Schema(
       type: String,
     },
     title: {
+      type: String,
+    },
+    image: {
       type: String,
     },
   },
