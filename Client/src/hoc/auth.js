@@ -25,14 +25,14 @@ export default function (Component, option, adminRoute = null) {
           if (adminRoute && !res.payload.isAdmin) {
             props.history.push("/");
           } else {
-            if (!option) {
+            if (option === false) {
               // alert("이미 로그인 한 상태입니다");
               props.history.push("/");
             }
           }
         }
       });
-    }, []);
+    }, [dispatch, props.history]);
     return <Component {...props} />;
   }
   return AuthCheck;
