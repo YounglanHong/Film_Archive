@@ -6,7 +6,8 @@ import Link from "@material-ui/core/Link";
 import "../../styles/movie.css";
 
 export default function MovieDetail(props) {
-  // console.log(props); // 영화 정보와 영화 키워드
+  // 영화 정보와 영화 키워드
+  // console.log(props);
 
   const {
     id,
@@ -17,22 +18,24 @@ export default function MovieDetail(props) {
     runtime,
     tagline,
     overview,
-    homepage,
     vote_average,
     release_date,
     poster_path,
+    backdrop_path,
   } = props.results;
 
   const { keywords } = props;
 
+  console.log(props);
+
   return (
     <div className="MovieDetail">
-      <h2>{title}</h2>
-      <div>{original_title}</div>
-      <div>{vote_average}</div>
-      <div>{runtime}</div>
-      {poster_path ? (
-        <img src={`${IMAGE_URL}w200/${poster_path}`} alt="poster_image" />
+      {backdrop_path ? (
+        <img
+          src={`${IMAGE_URL}w1280/${backdrop_path}`}
+          alt="movie_image"
+          className="detail_image"
+        />
       ) : (
         <img
           src="clapperboard.png"
@@ -41,13 +44,25 @@ export default function MovieDetail(props) {
           style={{ opacity: 0.5 }}
         />
       )}
-      <div>{tagline}</div>
-      <div>
-        {genres ? genres.map((genre) => <span>{genre.name} </span>) : ""}
-      </div>
-      <div>{overview}</div>
-      {/* <Link>{homepage}</Link> */}
-      <div>{release_date}</div>
+      <h2>{title}</h2>
+      <h4>{original_title}</h4>
+      <p>
+        <span>{vote_average}</span> <span>{runtime}m</span>
+        <span>{release_date}</span>
+      </p>
+
+      <p>{tagline}</p>
+      <p>
+        {genres
+          ? genres.map((genre, i) => <span key={i}>{genre.name} </span>)
+          : ""}
+      </p>
+      <p>
+        {production_countries
+          ? production_countries.map((country) => <span>{country.name} </span>)
+          : ""}
+      </p>
+      <p>{overview}</p>
       <div>
         {keywords
           ? keywords.map((keyword) => (
