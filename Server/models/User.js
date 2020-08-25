@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -82,7 +83,7 @@ userSchema.methods.createToken = function (callback) {
 userSchema.statics.findByToken = function (token, callback) {
   let user = this;
 
-  // decode token
+  // token 복호화
 
   jwt.verify(token, secretKey.secretKey, function (err, decoded) {
     // user._id를 활용하여 user를 검색하고,
