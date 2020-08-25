@@ -1,0 +1,22 @@
+.Review {
+  margin: 100px;
+}
+.review_cards {
+  margin: 100px;
+}
+
+.review_card {
+  margin: 50px;
+}
+
+.review_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.review_image {
+  border-radius: 5px;
+  max-width: 150px;
+  max-height: 250px;
+  opacity: 0.8;
+}

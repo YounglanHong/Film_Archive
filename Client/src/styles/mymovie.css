@@ -1,0 +1,16 @@
+.MyMovie {
+  margin: 100px;
+}
+
+.Favorite {
+  margin-top: 70px;
+}
+.Watched {
+  margin-top: 50px;
+}
+.mymovie_image {
+  border-radius: 5px;
+  max-width: 150px;
+  max-height: 250px;
+  opacity: 0.8;
+}

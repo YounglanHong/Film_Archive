@@ -5,6 +5,7 @@
 .Search {
   display: flex;
   flex-direction: row;
+  margin: 100px;
 }
 
 .SearchBar {
@@ -12,7 +13,7 @@
 }
 
 .SearchBar .search_bar {
-  margin: 100px;
+  margin: 50px;
   padding-left: 12px;
   border: 2px solid #fcba03;
   display: flex;
