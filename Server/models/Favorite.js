@@ -8,7 +8,7 @@ const favoriteSchema = mongoose.Schema(
       ref: "User",
     },
     movieId: {
-      type: String,
+      type: Number,
     },
     title: {
       type: String,
