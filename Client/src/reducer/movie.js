@@ -1,6 +1,11 @@
-import { ADD_FAV } from "../action/movieAction";
-import { ADD_REVIEW } from "../action/movieAction";
-import { ADD_WATCHED } from "../action/movieAction";
+import {
+  ADD_FAV,
+  ADD_REVIEW,
+  ADD_WATCHED,
+  GET_FAV,
+  GET_REVIEW,
+  GET_WATCHED,
+} from "../action/movieAction";
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -9,6 +14,12 @@ export default function (state = {}, action) {
     case ADD_FAV:
       return { ...state, favData: action.payload };
     case ADD_WATCHED:
+      return { ...state, watchedData: action.payload };
+    case GET_REVIEW:
+      return { ...state, reviewData: action.payload };
+    case GET_FAV:
+      return { ...state, favData: action.payload };
+    case GET_WATCHED:
       return { ...state, watchedData: action.payload };
     default:
       return state;

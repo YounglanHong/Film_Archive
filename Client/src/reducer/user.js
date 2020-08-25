@@ -14,7 +14,14 @@ import { SIGN_UP } from "../action/signupAction";
 export default function (state = {}, action) {
   switch (action.type) {
     case AUTH_USER:
-      return { ...state, userData: action.payload };
+      // console.log(action.payload);
+      // return { ...state, userData: action.payload };
+      return {
+        ...state,
+        userId: action.payload._id,
+        name: action.payload.name,
+        email: action.payload.email,
+      };
     case SIGN_IN:
       return { ...state, loginSuccess: action.payload };
     case SIGN_UP:
