@@ -1,24 +1,20 @@
 import React from "react";
 import Review from "../components/Movie/Review/Review";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
-export default function ReviewRoot(props) {
-  // const { userId } = props;
-  console.log(props);
+function ReviewRoot(props) {
+  const { reviewer } = props;
   return (
     <div className="ReviewRoot">
-      <Review /* userId={userId} */ />
+      <Review reviewer={reviewer} />
     </div>
   );
 }
 
-// const mapStateToProps = (state) => {
-//   // console.log(state);
-//   return {
-//     userId: state.user.userId,
-//     // email: state.user.email,
-//     // name: state.user.name,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    reviewer: state.user.userId,
+  };
+};
 
-// export default connect(mapStateToProps)(ReviewRoot);
+export default connect(mapStateToProps)(ReviewRoot);

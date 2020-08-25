@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { addReview } from "../../action/movieAction";
+import { addReview } from "../../../action/movieAction";
 
 export default function PostReview(props) {
-  //   console.log(props);
   const dispatch = useDispatch();
-  const { userId } = props;
+  const { userId, movieId, image } = props.location.state;
+  // console.log(userId);
 
   let [title, setTitle] = useState("");
   let [review, setReview] = useState("");
@@ -14,7 +14,7 @@ export default function PostReview(props) {
   useEffect(() => {
     // Movie Link로부터 props로 받은 title 정보
     setTitle(props.location.state.title);
-  }, []);
+  }, [props.location.state.title]);
 
   //* review 추가
   function postReview(e) {
@@ -22,8 +22,10 @@ export default function PostReview(props) {
     e.preventDefault();
 
     let body = {
-      userId: userId,
+      reviewer: userId,
+      movieId: movieId,
       title: title,
+      image: image,
       review: review,
     };
     dispatch(addReview(body)).then((res) => {
