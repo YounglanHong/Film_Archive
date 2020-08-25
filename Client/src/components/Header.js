@@ -16,11 +16,8 @@ function Header(props) {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
 
-  console.log(props);
-
   useEffect(() => {
     dispatch(auth()).then((res) => {
-      console.log(res);
       if (res.payload.isAuth) {
         setIsAuth(true);
         setName(res.payload.name);

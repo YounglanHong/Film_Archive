@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
@@ -51,7 +51,7 @@ function Account(props) {
   return (
     <div className="Account">
       <Button
-        aria-controls="simple-menu"
+        aria-controls="account_menu"
         aria-haspopup="true"
         onClick={handleMenuClick}
       >
@@ -64,7 +64,6 @@ function Account(props) {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        {/* {isAuth ? <MenuItem onClick={handleMenuClose}>Mypage</MenuItem> : ""} */}
         {!isAuth ? (
           <MenuItem onClick={handleMenuClose}>
             <Link to="/signin" className="link">
@@ -79,14 +78,16 @@ function Account(props) {
                 <div className="account_email">{email}</div>
               </div>
             </MenuItem>
+            <hr />
             <MenuItem>
-              <Link className="link">User Settings</Link>
+              <Link to="/" className="link">
+                User Settings
+              </Link>
             </MenuItem>
-            {/* <hr /> */}
 
             <MenuItem
               onClick={handleSignOut}
-              style={{ backgroundColor: "rgb(226, 226, 226)" }}
+              // style={{ backgroundColor: "rgb(226, 226, 226)" }}
             >
               <Link to="/signout" className="link">
                 Sign Out

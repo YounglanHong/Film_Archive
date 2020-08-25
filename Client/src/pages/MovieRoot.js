@@ -1,5 +1,6 @@
 import React from "react";
 import Movie from "../components/Movie/Movie";
+// import MyMovie from "../components/Movie/MyMovie";
 import { connect } from "react-redux";
 
 function MovieRoot(props) {

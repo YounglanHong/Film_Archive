@@ -12,7 +12,7 @@ export default function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log(props);
+  // console.log(props);
 
   function handleEmail(e) {
     setEmail(e.target.value);

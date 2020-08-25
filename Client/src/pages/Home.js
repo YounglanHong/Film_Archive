@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { API_KEY, API_URL, IMAGE_URL } from "../config";
+import { API_KEY, API_URL } from "../config";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import "../styles/movie.css";
 
-import PopularList from "../components/Movie/PopularList";
-import TopRatedList from "../components/Movie/TopRatedList";
-import NowPlayingList from "../components/Movie/NowPlayingList";
+import PopularList from "../components/MovieList/PopularList";
+import TopRatedList from "../components/MovieList/TopRatedList";
+import NowPlayingList from "../components/MovieList/NowPlayingList";
 
 export default function Home(props) {
   let [popular, setPopular] = useState("");
@@ -62,7 +62,7 @@ export default function Home(props) {
     axios
       .get(`${API_URL}movie/top_rated?api_key=${API_KEY}`)
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         let topRatedMovies = res.data.results
 
           // 1 ~ 10 위권 결과만 출력
@@ -79,7 +79,7 @@ export default function Home(props) {
     axios
       .get(`${API_URL}movie/now_playing?api_key=${API_KEY}`)
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         let nowPlayingMovies = res.data.results
           // 10개 결과만 출력
           .slice(0, 10);
