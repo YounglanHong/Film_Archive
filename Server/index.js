@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
 const mongoose = require("mongoose");
 
 const bodyParser = require("body-parser");
@@ -16,6 +18,8 @@ mongoose
   })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("error", err));
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
