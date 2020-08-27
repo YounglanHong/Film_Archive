@@ -12,7 +12,7 @@ export default function (Component, option, adminRoute = null) {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(auth()).then((res) => {
-        console.log(res);
+        // console.log(res);
 
         //* 분기 처리
         if (!res.payload.isAuth) {

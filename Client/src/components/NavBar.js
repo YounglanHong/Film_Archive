@@ -24,7 +24,7 @@ export default function NavBar() {
         <ExpandMoreIcon onClick={navbarClick} />
       </i>
       <div className={className}>
-        {console.log("className", className)}
+        {/* {console.log("className", className)} */}
         <Link to="/" className="navbar_item">
           Home
         </Link>

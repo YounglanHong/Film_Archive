@@ -19,8 +19,8 @@ function Account(props) {
   // console.log(props);
   // Header로부터 받는 props(isAuth, name, email)
   const { isAuth, email, name } = props;
-  console.log(isAuth);
-  console.log(name, email);
+  // console.log(isAuth);
+  // console.log(name, email);
 
   function handleMenuClick(e) {
     setAnchorEl(e.currentTarget);
