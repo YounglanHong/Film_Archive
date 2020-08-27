@@ -1,10 +1,6 @@
-/* .container {
-  margin: 100px;
-} */
-
 .Search {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 100px;
 }
 
@@ -12,18 +8,16 @@
   margin: 30px;
 }
 
-.SearchBar .search_bar {
+.search_paper {
   margin: 50px;
-  padding-left: 12px;
-  border: 2px solid #fcba03;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  width: 300px;
 }
-
-.SearchBar .search_bar .search_bar_line {
-  border-left: 2px solid #fce096;
-  height: 30px;
+.search_input {
+  margin-left: 15px;
 }
 
 .SearchResult {
