@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import movie_poster from "../images/movie_poster.png";
 
 import { IMAGE_URL } from "../../config";
 
 import "../../styles/search.css";
 
 export default function SearchResult(props) {
-  // console.log(props.result.title);
-  console.log(props);
+  // console.log(props);
 
   const { id, title, original_title, release_date, poster_path } = props.result;
 

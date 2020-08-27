@@ -1,26 +1,31 @@
 import React from "react";
 
+import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
+import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 export default function SearchBar(props) {
-  const { handleSearchInput, handleSearchSubmit } = props;
-  // console.log(props);
+  const { handleSearchInput, handleSearchSubmit, enterKeyPress } = props;
   return (
     <div className="SearchBar">
-      <div className="search_bar">
+      <Paper component="form" className="search_paper">
         <InputBase
+          className="search_input"
           placeholder="Search Movies"
           value={props.query}
           onChange={handleSearchInput}
-          // style={{ color: "white" }}
+          onKeyDown={enterKeyPress}
         />
-        <div className="search_bar_line"></div>
+        <Divider
+          orientation="vertical"
+          style={{ height: "30px", width: "1px" }}
+        />
         <IconButton type="submit" onClick={handleSearchSubmit}>
-          <SearchIcon /*style={{ color: "white" }} */ />
+          <SearchIcon />
         </IconButton>
-      </div>
+      </Paper>
     </div>
   );
 }
