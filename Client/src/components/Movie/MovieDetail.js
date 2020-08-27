@@ -1,7 +1,5 @@
 import React from "react";
-import { API_KEY, API_URL, IMAGE_URL } from "../../config";
-
-import Link from "@material-ui/core/Link";
+import { IMAGE_URL } from "../../config";
 
 import "../../styles/movie.css";
 
@@ -10,7 +8,7 @@ export default function MovieDetail(props) {
   // console.log(props);
 
   const {
-    id,
+    // id,
     title,
     original_title,
     genres,
@@ -20,7 +18,7 @@ export default function MovieDetail(props) {
     overview,
     vote_average,
     release_date,
-    poster_path,
+    // poster_path,
     backdrop_path,
   } = props.results;
 

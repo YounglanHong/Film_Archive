@@ -7,7 +7,7 @@ import "../../../styles/mymovie.css";
 
 export default function MyMovie(props) {
   console.log(props);
-  const { userId, email, name } = props;
+  const { userId /* email, name */ } = props;
   return (
     <div className="MyMovie">
       <h1>MyMovies</h1>

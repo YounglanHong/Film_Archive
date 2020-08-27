@@ -5,13 +5,14 @@ import MovieDetail from "./MovieDetail";
 import FavoriteBtn from "./Button/FavoriteBtn";
 import WatchedBtn from "./Button/WatchedBtn";
 
-import { API_KEY, API_URL, IMAGE_URL } from "../../config";
+import { API_KEY, API_URL } from "../../config";
 
 import "../../styles/movie.css";
 import RateReviewOutlinedIcon from "@material-ui/icons/RateReviewOutlined";
 
 export default function Movie(props) {
   const { userId } = props;
+  console.log(props);
 
   let [results, setResults] = useState("");
   let [keywords, setKeywords] = useState([]);
@@ -40,7 +41,7 @@ export default function Movie(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.id]);
 
   return (
     <div className="Movie">
@@ -67,7 +68,7 @@ export default function Movie(props) {
             title: results.original_title,
             userId: userId,
             movieId: props.id,
-            image: results.poster_path,
+            image: results.backdrop_path,
           },
         }}
         className="link"

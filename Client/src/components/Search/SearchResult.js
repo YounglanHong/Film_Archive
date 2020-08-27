@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import movie_poster from "../images/movie_poster.png";
+// import movie_poster from "../images/movie_poster.png";
 
 import { IMAGE_URL } from "../../config";
 

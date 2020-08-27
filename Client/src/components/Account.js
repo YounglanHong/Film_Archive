@@ -26,9 +26,9 @@ function Account(props) {
     setAnchorEl(e.currentTarget);
   }
 
-  const handleMenuClose = () => {
+  function handleMenuClose() {
     setAnchorEl(null);
-  };
+  }
 
   function handleSignOut(e) {
     // 새로고침 방지

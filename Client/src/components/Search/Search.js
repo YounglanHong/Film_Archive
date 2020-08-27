@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
-import { API_KEY, API_URL, IMAGE_URL } from "../../config";
+import { API_KEY, API_URL } from "../../config";
 
 import "../../styles/search.css";
 
