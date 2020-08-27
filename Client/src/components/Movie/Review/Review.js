@@ -2,35 +2,74 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getReview } from "../../../action/movieAction";
-import { IMAGE_URL } from "../../../config";
 import ReviewCard from "./ReviewCard";
 
-// import { addReview } from "../../action/movieAction";
+import Grid from "@material-ui/core/Grid";
 
 import "../../../styles/review.css";
-import RateReviewOutlinedIcon from "@material-ui/icons/RateReviewOutlined";
+import SearchIcon from "@material-ui/icons/Search";
 
 export default function Review(props) {
   const dispatch = useDispatch();
-  const { reviewer } = props;
+
+  //? Props from ReviewRoot
+  const { reviewer, reviewData } = props;
+
   let [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    // console.log({ reviewer });
     dispatch(getReview({ reviewer })).then((res) => {
       if (res.payload.reviews) {
         setReviews(res.payload.reviews);
       }
     });
   }, [dispatch, reviewer]);
+
   return (
     <div className="Review">
       <h1>Reviews</h1>
-      {console.log(reviews)}
-      <Link to="/search" className="link" style={{ display: "flex" }}>
-        <RateReviewOutlinedIcon /> PostReview
+      <Link
+        to="/search"
+        className="link"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "10px",
+        }}
+      >
+        <SearchIcon /> Search Movies to Post Reviews
       </Link>
-      <ReviewCard reviews={reviews} />
+      <Grid container spacing={3}>
+        {reviewData
+          ? reviewData.map((reviewItem) => {
+              const {
+                _id,
+                createdAt,
+                movieId,
+                title,
+                image,
+                review,
+              } = reviewItem;
+              return (
+                <Grid item lg={3} md={4} sm={6} xs={12}>
+                  {reviewItem ? (
+                    <ReviewCard
+                      key={_id}
+                      createdAt={createdAt}
+                      movieId={movieId}
+                      title={title}
+                      image={image}
+                      review={review}
+                      reviewer={reviewer}
+                    />
+                  ) : (
+                    " "
+                  )}
+                </Grid>
+              );
+            })
+          : ""}
+      </Grid>
     </div>
   );
 }

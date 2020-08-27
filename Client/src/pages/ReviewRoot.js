@@ -3,10 +3,11 @@ import Review from "../components/Movie/Review/Review";
 import { connect } from "react-redux";
 
 function ReviewRoot(props) {
-  const { reviewer } = props;
+  const { reviewer, reviewData } = props;
+
   return (
     <div className="ReviewRoot">
-      <Review reviewer={reviewer} />
+      <Review reviewer={reviewer} reviewData={reviewData} />
     </div>
   );
 }
@@ -14,6 +15,7 @@ function ReviewRoot(props) {
 const mapStateToProps = (state) => {
   return {
     reviewer: state.user.userId,
+    reviewData: state.movie.reviewData,
   };
 };
 

@@ -1,22 +1,21 @@
 .Review {
   margin: 100px;
 }
-.review_cards {
-  margin: 100px;
-}
 
 .review_card {
-  margin: 50px;
+  margin-top: 50px;
 }
 
-.review_item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.review_item h5 {
+  margin-top: 10px;
 }
-.review_image {
-  border-radius: 5px;
-  max-width: 150px;
-  max-height: 250px;
-  opacity: 0.8;
+
+.review_item .review {
+  margin: 20px 0px 20px 10px;
+}
+
+.review_item .review_createdAt {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
 }
