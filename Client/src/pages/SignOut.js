@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignIn from "./SignIn";
+// import SignIn from "./SignIn";
 
 import "../styles/signout.css";
 

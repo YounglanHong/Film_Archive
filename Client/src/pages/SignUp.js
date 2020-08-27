@@ -30,6 +30,13 @@ export default function SignUp(props) {
     setPasswordCheck(e.target.value);
   }
 
+  // 엔터키 제출
+  function enterKeySignUp(e) {
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  }
+
   function handleSubmit(e) {
     // 새로고침 방지
     e.preventDefault();
@@ -61,7 +68,11 @@ export default function SignUp(props) {
   return (
     <div className="SignUp">
       <div className="signup_container">
-        <form className="signup_form" onSubmit={handleSubmit}>
+        <form
+          className="signup_form"
+          onSubmit={handleSubmit}
+          onKeyPress={enterKeySignUp}
+        >
           <h3>SignUp</h3>
           <label>Name</label>
           <input type="text" value={name} onChange={handleName} />

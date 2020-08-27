@@ -22,6 +22,13 @@ export default function SignIn(props) {
     setPassword(e.target.value);
   }
 
+  // 엔터키 제출
+  function enterKeySignIn(e) {
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  }
+
   function handleSubmit(e) {
     // 새로고침 방지
     e.preventDefault();
@@ -50,7 +57,11 @@ export default function SignIn(props) {
   return (
     <div className="SignIn">
       <div className="signin_container">
-        <form className="signin_form" onSubmit={handleSubmit}>
+        <form
+          className="signin_form"
+          onSubmit={handleSubmit}
+          onKeyPress={enterKeySignIn}
+        >
           <h3>SignIn</h3>
           <label>Email</label>
           <input type="email" value={email} onChange={handleEmail} />
