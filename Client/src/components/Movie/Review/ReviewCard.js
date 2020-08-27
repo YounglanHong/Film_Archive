@@ -29,7 +29,7 @@ export default function ReviewCard(props) {
   useEffect(() => {
     setImageSrc(`${IMAGE_URL}w1280/${image}`);
     setDate(reviewDate);
-  }, [setImageSrc, image]);
+  }, [setImageSrc, image, reviewDate]);
 
   function handleDeleteReview(e) {
     // 새로고침 방지
