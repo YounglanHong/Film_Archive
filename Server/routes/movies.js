@@ -26,7 +26,7 @@ router.post("/addReview", (req, res) => {
 
 //* review 삭제
 router.post("/deleteReview", (req, res) => {
-  Favorite.findOneAndDelete({
+  Review.findOneAndDelete({
     reviewer: req.body.reviewer,
     movieId: req.body.movieId,
   }).exec((err, result) => {
