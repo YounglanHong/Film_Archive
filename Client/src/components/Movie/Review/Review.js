@@ -18,11 +18,22 @@ export default function Review(props) {
   let [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    dispatch(getReview({ reviewer })).then((res) => {
-      if (res.payload.reviews) {
-        setReviews(res.payload.reviews);
-      }
-    });
+    let isUnmount = false;
+    // Review data 호출
+    dispatch(getReview({ reviewer }))
+      .then((res) => {
+        if (isUnmount) {
+          if (res.payload.reviews) {
+            setReviews(res.payload.reviews);
+          }
+        }
+      })
+      .catch((err) => {
+        setReviews(null);
+      });
+    return () => {
+      isUnmount = true;
+    };
   }, [dispatch, reviewer, reviews]);
 
   return (
