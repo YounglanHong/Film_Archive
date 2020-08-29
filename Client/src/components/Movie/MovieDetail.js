@@ -56,13 +56,13 @@ export default function MovieDetail(props) {
       )}
       <Paper className="movie_detail_paper">
         <div className="movie_detail_contents">
-          <div className="movie_detail_items">
+          <ul className="movie_detail_items">
             <header className="movie_detail_item1">
               <Typography variant="h3">{title}</Typography>
               <Typography variant="h6">{original_title}</Typography>
               <Typography variant="body1">{tagline}</Typography>
             </header>
-            <ul className="movie_detail_item2">
+            <li className="movie_detail_item2">
               <Typography variant="subtitle1">
                 Genre
                 {genres
@@ -75,8 +75,8 @@ export default function MovieDetail(props) {
                     ))
                   : ""}
               </Typography>
-            </ul>
-            <ul className="movie_detail_item3">
+            </li>
+            <li className="movie_detail_item3">
               <Typography variant="subtitle1">
                 Rating
                 <div>{vote_average}</div>
@@ -85,13 +85,15 @@ export default function MovieDetail(props) {
                 Year
                 <div>{release_year}</div>
               </Typography>
-            </ul>
-          </div>
+            </li>
+          </ul>
           <br />
           <br />
-          <Typography variant="body1">{overview}</Typography>
+          <p className="movie_detail_body">
+            <Typography variant="body1">{overview}</Typography>
+          </p>
           <br />
-          <div className="movie_detail_item4">
+          <li className="movie_detail_item4">
             {keywords
               ? keywords.map((keyword, i) => (
                   <Typography variant="caption" key={i}>
@@ -100,7 +102,7 @@ export default function MovieDetail(props) {
                   </Typography>
                 ))
               : ""}
-          </div>
+          </li>
         </div>
       </Paper>
     </div>
