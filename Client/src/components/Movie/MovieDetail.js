@@ -1,6 +1,8 @@
 import React from "react";
 import { IMAGE_URL } from "../../config";
 
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 import "../../styles/movie.css";
 
 export default function MovieDetail(props) {
@@ -24,7 +26,17 @@ export default function MovieDetail(props) {
 
   const { keywords } = props;
 
-  console.log(props);
+  // 날짜에서 연도 추출
+  let release_year;
+  if (release_date) {
+    release_year = release_date.slice(0, 4);
+  }
+
+  // 나라 2개만 추출
+  let countries;
+  if (production_countries) {
+    countries = production_countries.slice(0, 2);
+  }
 
   return (
     <div className="MovieDetail">
@@ -42,35 +54,53 @@ export default function MovieDetail(props) {
           style={{ opacity: 0.5 }}
         />
       )}
-      <h2>{title}</h2>
-      <h4>{original_title}</h4>
-      <p>
-        <span>{vote_average}</span> <span>{runtime}m</span>
-        <span>{release_date}</span>
-      </p>
-
-      <p>{tagline}</p>
-      <p>
-        {genres
-          ? genres.map((genre, i) => <span key={i}>{genre.name} </span>)
-          : ""}
-      </p>
-      <p>
-        {production_countries
-          ? production_countries.map((country) => <span>{country.name} </span>)
-          : ""}
-      </p>
-      <p>{overview}</p>
-      <div>
-        {keywords
-          ? keywords.map((keyword) => (
-              <span>
-                #{keyword.name}
-                {"  "}
-              </span>
-            ))
-          : ""}
-      </div>
+      <Paper className="movie_detail_paper">
+        <div className="movie_detail_contents">
+          <div className="movie_detail_items">
+            <ul className="movie_detail_item1">
+              <Typography variant="h3">{title}</Typography>
+              <Typography variant="h6">{original_title}</Typography>
+              <Typography variant="body1">{tagline}</Typography>
+            </ul>
+            <ul className="movie_detail_item2">
+              <Typography variant="subtitle1">
+                Genre
+                {genres
+                  ? genres.map((genre, i) => <div key={i}>{genre.name}</div>)
+                  : ""}
+                Country
+                {production_countries
+                  ? countries.map((country, i) => (
+                      <div key={i}>{country.name} </div>
+                    ))
+                  : ""}
+              </Typography>
+            </ul>
+            <ul className="movie_detail_item3">
+              <Typography variant="subtitle1">
+                Rating
+                <div>{vote_average}</div>
+                Runtime
+                <div>{runtime}m</div>
+                Year
+                <div>{release_year}</div>
+              </Typography>
+            </ul>
+          </div>
+          <br />
+          <br />
+          <Typography variant="body1">{overview}</Typography>
+          <br />
+          {keywords
+            ? keywords.map((keyword, i) => (
+                <Typography variant="caption">
+                  #{keyword.name}
+                  {"  "}
+                </Typography>
+              ))
+            : ""}
+        </div>
+      </Paper>
     </div>
   );
 }
