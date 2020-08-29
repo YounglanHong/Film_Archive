@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
@@ -8,7 +10,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { useDispatch } from "react-redux";
 import { addWatched, deleteWatched } from "../../../action/movieAction";
 
+const useStyles = makeStyles({
+  link: {
+    margin: "10px 30px 0px 30px",
+  },
+});
+
 export default function WatchedBtn(props) {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const { movieId, userId, title, image } = props;
   let [isWatched, setIsWatched] = useState(false);
@@ -52,7 +61,7 @@ export default function WatchedBtn(props) {
   return (
     <div className="WatchedBtn">
       <div>
-        <IconButton onClick={handleWatchedBtn}>
+        <IconButton className={classes.link} onClick={handleWatchedBtn}>
           {isWatched ? (
             <Tooltip title="Remove from Watched">
               <VisibilityIcon />

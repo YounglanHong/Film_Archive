@@ -10,9 +10,25 @@ import { API_KEY, API_URL } from "../../config";
 import "../../styles/movie.css";
 import RateReviewOutlinedIcon from "@material-ui/icons/RateReviewOutlined";
 
+import { makeStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+import IconButton from "@material-ui/core/IconButton";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+
+const useStyles = makeStyles({
+  navigation: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  link: {
+    margin: "10px 30px 0px 30px",
+  },
+});
+
 export default function Movie(props) {
   const { userId } = props;
-  console.log(props);
+  const classes = useStyles();
 
   let [results, setResults] = useState("");
   let [keywords, setKeywords] = useState([]);
@@ -45,41 +61,42 @@ export default function Movie(props) {
 
   return (
     <div className="Movie">
-      <MovieDetail results={results} keywords={keywords} />
-      <br />
-      <br />
-      <FavoriteBtn
-        movieId={props.id}
-        userId={userId}
-        title={results.original_title}
-        image={results.poster_path}
-      />
-      <WatchedBtn
-        movieId={props.id}
-        userId={userId}
-        title={results.original_title}
-        image={results.poster_path}
-      />
+      {console.log(props)}
+      <MovieDetail key={props.id} results={results} keywords={keywords} />
+      <BottomNavigation className={classes.navigation}>
+        <WatchedBtn
+          className={classes.link}
+          movieId={props.id}
+          userId={userId}
+          title={results.original_title}
+          image={results.poster_path}
+        />
 
-      <Link
-        to={{
-          pathname: `/postReview/${results.original_title}`,
-          state: {
-            title: results.original_title,
-            userId: userId,
-            movieId: props.id,
-            image: results.backdrop_path,
-          },
-        }}
-        className="link"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          // justifyContent: "center",
-        }}
-      >
-        <RateReviewOutlinedIcon /> Post Review
-      </Link>
+        <FavoriteBtn
+          movieId={props.id}
+          userId={userId}
+          title={results.original_title}
+          image={results.poster_path}
+        />
+
+        <Link
+          to={{
+            pathname: `/postReview/${results.original_title}`,
+            state: {
+              title: results.original_title,
+              userId: userId,
+              movieId: props.id,
+              image: results.backdrop_path,
+            },
+          }}
+        >
+          <IconButton className={classes.link}>
+            <Tooltip title="Post Review">
+              <RateReviewOutlinedIcon />
+            </Tooltip>
+          </IconButton>
+        </Link>
+      </BottomNavigation>
     </div>
   );
 }
