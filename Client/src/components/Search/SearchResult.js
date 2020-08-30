@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 
 import { IMAGE_URL } from "../../config";
 
+import Typography from "@material-ui/core/Typography";
 import "../../styles/search.css";
 
 export default function SearchResult(props) {
-  // console.log(props);
-
   const { id, title, original_title, release_date, poster_path } = props.result;
 
   return (
     <div className="SearchResult">
       <Link
         to={{
-          // pathname: `/movie/${id}/${title}`,
           pathname: `/movie/${title}`,
           state: {
             id: id,
@@ -24,19 +22,24 @@ export default function SearchResult(props) {
         className="link"
       >
         {poster_path ? (
-          <img src={`${IMAGE_URL}w200/${poster_path}`} alt="poster_image" />
+          <img
+            src={`${IMAGE_URL}w200/${poster_path}`}
+            alt="poster_image"
+            className="search_image"
+          />
         ) : (
           <img
             src="clapperboard.png"
-            width="200"
-            alt=""
-            style={{ opacity: 0.5 }}
+            alt="poster_not_found"
+            className="search_image"
           />
         )}
-        <h2>{title}</h2>
+        <Typography variant="h6" className="search_title">
+          {title}
+        </Typography>
       </Link>
-      <p>{original_title}</p>
-      <p>{release_date}</p>
+      <div className="search_origin">{original_title}</div>
+      <span className="search_date">{release_date}</span>
     </div>
   );
 }

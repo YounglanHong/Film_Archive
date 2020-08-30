@@ -60,13 +60,15 @@ export default function Search() {
   return (
     <div className="Search">
       <h1>Search</h1>
-      <SearchBar
-        query={query}
-        handleSearchInput={handleSearchInput}
-        handleSearchSubmit={handleSearchSubmit}
-        enterKeyPress={enterKeyPress}
-      />
-      <div>{resultMap(results)}</div>
+      <div className="search_container">
+        <SearchBar
+          query={query}
+          handleSearchInput={handleSearchInput}
+          handleSearchSubmit={handleSearchSubmit}
+          enterKeyPress={enterKeyPress}
+        />
+        {resultMap(results)}
+      </div>
     </div>
   );
 }
