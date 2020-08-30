@@ -2,6 +2,8 @@ import React from "react";
 import MyMovie from "../components/Movie/MyMovie/MyMovie";
 import { connect } from "react-redux";
 
+import "../styles/mymovie.css";
+
 function MyMovieRoot(props) {
   const { userId } = props;
   return (
