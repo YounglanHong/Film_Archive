@@ -89,9 +89,11 @@ export default function MovieDetail(props) {
           </ul>
           <br />
           <br />
-          <p className="movie_detail_body">
-            <Typography variant="body1">{overview}</Typography>
-          </p>
+
+          <Typography variant="body1" style={{ margin: "20px" }}>
+            {overview}
+          </Typography>
+
           <br />
           <li className="movie_detail_item4">
             {keywords
