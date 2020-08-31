@@ -44,20 +44,19 @@ export default function ReviewCard(props) {
     });
   }
 
+  let link_path = {
+    pathname: `/movie/${title}`,
+    state: {
+      id: movieId,
+      title: title,
+    },
+  };
+
   return (
     <div className="ReviewCards">
       {movieId ? (
         <Card className="review_card" style={{ minHeight: "30vw" }}>
-          <Link
-            to={{
-              pathname: `/movie/${title}`,
-              state: {
-                id: movieId,
-                title: title,
-              },
-            }}
-            className="link"
-          >
+          <Link to={link_path} className="link">
             <CardMedia
               className="review_image"
               src={imageSrc}

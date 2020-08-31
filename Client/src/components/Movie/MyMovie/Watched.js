@@ -23,19 +23,17 @@ export default function Watched(props) {
       {/* <h2>Watched Movies</h2> */}
       <ul>
         {watchedMovies.map((watchedMovie, i) => {
+          let link_path = {
+            pathname: `/movie/${watchedMovie.title}`,
+            state: {
+              id: watchedMovie.movieId,
+              title: watchedMovie.title,
+            },
+          };
           return (
             <div key={i}>
               <li>
-                <Link
-                  to={{
-                    pathname: `/movie/${watchedMovie.title}`,
-                    state: {
-                      id: watchedMovie.movieId,
-                      title: watchedMovie.title,
-                    },
-                  }}
-                  className="mymovie_list"
-                >
+                <Link to={link_path} className="mymovie_list">
                   {watchedMovie.title}
                 </Link>
               </li>

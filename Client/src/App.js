@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import SearchRoot from "./pages/SearchRoot";
 import MovieRoot from "./pages/MovieRoot";
-// import MyMovie from "./components/Movie/MyMovie/MyMovie";
 import MyMovieRoot from "./pages/MyMovieRoot";
 import ReviewRoot from "./pages/ReviewRoot";
 import PostReview from "./components/Movie/Review/PostReview";
@@ -16,6 +15,10 @@ import SignUp from "./pages/SignUp";
 import Auth from "./hoc/auth";
 
 class App extends Component {
+  /* option 
+       - null: 모두 출입 가능
+       - true: 로그인 한 유저만 출입 가능
+       - false: 로그인 한 유저는 출입 불가 */
   render() {
     return (
       <div className="App">

@@ -20,21 +20,23 @@ export default function Favorite(props) {
       }
     });
   }, [dispatch, userId]);
+
   return (
     <div className="Favorite">
       <ul>
         {favorMovies.map((favorMovie, i) => {
+          let link_path = {
+            pathname: `/movie/${favorMovie.title}`,
+            state: {
+              id: favorMovie.movieId,
+              title: favorMovie.title,
+            },
+          };
           return (
             <div key={i}>
               <li>
                 <Link
-                  to={{
-                    pathname: `/movie/${favorMovie.title}`,
-                    state: {
-                      id: favorMovie.movieId,
-                      title: favorMovie.title,
-                    },
-                  }}
+                  to={link_path}
                   // className="link"
                   className="mymovie_list"
                 >

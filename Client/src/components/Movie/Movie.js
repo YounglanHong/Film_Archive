@@ -59,6 +59,16 @@ export default function Movie(props) {
       });
   }, [props.id]);
 
+  let link_path = {
+    pathname: `/postReview/${results.original_title}`,
+    state: {
+      title: results.original_title,
+      userId: userId,
+      movieId: props.id,
+      image: results.backdrop_path,
+    },
+  };
+
   return (
     <div className="Movie">
       {console.log(props)}
@@ -79,17 +89,7 @@ export default function Movie(props) {
           image={results.poster_path}
         />
 
-        <Link
-          to={{
-            pathname: `/postReview/${results.original_title}`,
-            state: {
-              title: results.original_title,
-              userId: userId,
-              movieId: props.id,
-              image: results.backdrop_path,
-            },
-          }}
-        >
+        <Link to={link_path}>
           <IconButton className={classes.link}>
             <Tooltip title="Post Review">
               <RateReviewOutlinedIcon />
