@@ -5,7 +5,7 @@ import { signIn } from "../action/signinAction";
 import { TEST_EMAIL } from "../config";
 import { TEST_PASSWORD } from "../config";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import "../styles/signin.css";
 import { makeStyles } from "@material-ui/core/styles";
@@ -48,7 +48,7 @@ export default function SignIn(props) {
   useEffect(() => {
     setEmail(TEST_EMAIL);
     setPassword(TEST_PASSWORD);
-  });
+  }, []);
 
   // console.log(props);
 

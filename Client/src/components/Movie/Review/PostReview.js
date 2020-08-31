@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { addReview } from "../../../action/movieAction";
 
-import { makeStyles, withTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
@@ -14,10 +14,14 @@ const useStyles = makeStyles({
   input_title: {
     margin: "50px 30px 20px 30px",
     backgroundColor: "white",
+    border: "1px solid white",
+    borderRadius: "0.1em",
   },
   input_text: {
     margin: "0px 30px 10px 30px",
     backgroundColor: "white",
+    border: "1px solid white",
+    borderRadius: "0.1em",
   },
   button: { margin: "10px 30px 0px 30px" },
 });

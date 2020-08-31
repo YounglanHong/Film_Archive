@@ -31,7 +31,7 @@ export default function MyMovie(props) {
       <div className="mymovie_container">
         <div className="mymovie_button">
           <button
-            className="mymovie_btn"
+            className="mymovie_btn_favor"
             style={
               watched
                 ? { backgroundColor: "#e1e1e1" }
@@ -41,7 +41,7 @@ export default function MyMovie(props) {
           >
             <strong>Favorite</strong>
           </button>
-          <button className="mymovie_btn" onClick={clickWatched}>
+          <button className="mymovie_btn_watched" onClick={clickWatched}>
             <strong>Watched</strong>
           </button>
         </div>

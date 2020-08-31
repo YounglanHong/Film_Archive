@@ -60,7 +60,7 @@ export default function MovieDetail(props) {
             <header className="movie_detail_item1">
               <Typography variant="h3">{title}</Typography>
               <Typography variant="h6">{original_title}</Typography>
-              <Typography variant="body1">{tagline}</Typography>
+              <Typography variant="body2">{tagline}</Typography>
             </header>
             <li className="movie_detail_item2">
               <Typography variant="subtitle1">

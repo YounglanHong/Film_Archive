@@ -33,7 +33,7 @@ export default function Watched(props) {
           return (
             <div key={i}>
               <li>
-                <Link to={link_path} className="mymovie_list">
+                <Link to={link_path} className="mymovie_list_watched">
                   {watchedMovie.title}
                 </Link>
               </li>

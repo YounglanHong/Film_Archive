@@ -9,6 +9,7 @@
 
 .movie_list_title {
   color: white;
+  font-family: "Oswald", sans-serif;
 }
 
 .list_items {
@@ -34,6 +35,11 @@
   transition: transform 300ms ease 100ms;
   z-index: 1;
   max-width: 200px;
+}
+
+.list_item h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
 }
 
 .list_item:hover {
@@ -123,6 +129,7 @@
 .movie_detail_item4 {
   list-style-type: none;
   margin: 20px;
+  color: #abda05;
 }
 
 /*? media query ?*/
