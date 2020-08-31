@@ -8,7 +8,7 @@
     "npm": "6.14.5"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node Server/index.js",
     "backend": "nodemon Server/index.js",
     "frontend": "npm run front --prefix Client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix Client\"",
