@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
-const secretKey = require("../config/secretKey");
 
 const userSchema = mongoose.Schema({
   name: {
@@ -71,7 +70,7 @@ userSchema.methods.checkPassword = function (plainPassword, callback) {
 // jwt 이용해서 token 생성
 userSchema.methods.createToken = function (callback) {
   let user = this;
-  let token = jwt.sign(user._id.toHexString(), secretKey.secretKey);
+  let token = jwt.sign(user._id.toHexString(), "filmArchive");
   /* user._id + secretKet = token */
   user.token = token;
   user.save(function (err, user) {
@@ -85,7 +84,7 @@ userSchema.statics.findByToken = function (token, callback) {
 
   // token 복호화
 
-  jwt.verify(token, secretKey.secretKey, function (err, decoded) {
+  jwt.verify(token, "filmArchive", function (err, decoded) {
     // user._id를 활용하여 user를 검색하고,
     // 클라이언트에서 가져온 token 과 DB에 저장된 토큰이 일치하는지 확인
 
