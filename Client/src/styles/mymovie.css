@@ -15,6 +15,7 @@
 
 .mymovie_heading {
   margin-bottom: 70px;
+  color: #616161;
 }
 .mymovie_btn {
   padding: 10px 20px 10px 20px;
@@ -30,10 +31,6 @@
 .mymovie_btn:focus {
   outline: none;
 }
-
-/* .mymovie_btn .onload {
-  background-color: white;
-} */
 
 .mymovie_btn:active {
   background-color: white;

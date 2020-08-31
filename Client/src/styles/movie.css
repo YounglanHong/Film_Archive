@@ -29,6 +29,7 @@
   text-align: center;
   transition: transform 300ms ease 100ms;
   z-index: 1;
+  max-width: 200px;
 }
 
 .list_item:hover {

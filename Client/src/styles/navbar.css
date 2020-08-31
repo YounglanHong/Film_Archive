@@ -8,6 +8,7 @@
 .navbar_item {
   text-decoration: none;
   color: #aeea00;
+  font-family: "Oswald", sans-serif;
 }
 
 .navbar_item:hover {
@@ -17,6 +18,7 @@
 .navbar_expand {
   display: none;
   cursor: pointer;
+  color: #aeea00;
 }
 
 .navbar_items_toggle {
