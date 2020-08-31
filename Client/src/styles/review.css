@@ -1,3 +1,5 @@
+/*** Review ***/
+
 .Review {
   margin: 100px;
 }
@@ -18,4 +20,23 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 10px;
+}
+
+/*** PostReview ***/
+
+.PostReview {
+  margin: 100px;
+}
+.postreview_container {
+  display: flex;
+  flex-direction: column;
+  right: 100px;
+}
+
+.postreview_limit {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10pt;
+  padding: 0px 30px 10px 0px;
+  color: #eeff41;
 }
