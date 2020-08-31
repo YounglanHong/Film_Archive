@@ -14,12 +14,24 @@ code {
 
 .link {
   text-decoration: none;
-  color: black;
+  color: rgb(132, 134, 136);
 }
 
 .link:hover {
-  color: #fcba03;
+  color: #aeea00;
 }
+
+body {
+  background-color: rgb(3, 7, 8);
+}
+
+h1 {
+  color: white;
+}
+
+/* h1:hover {
+  color: #aeea00;
+} */
 
 /* body {
   background-color: rgb(3, 7, 8);

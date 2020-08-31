@@ -7,11 +7,11 @@
 
 .navbar_item {
   text-decoration: none;
-  color: burlywood;
+  color: #aeea00;
 }
 
 .navbar_item:hover {
-  color: #fcba03;
+  color: #f4ff81;
 }
 
 .navbar_expand {

@@ -29,11 +29,11 @@ function Header(props) {
   return (
     <div className="Header">
       {/* {console.log(isAuth)} */}
-      <div className="header_top"></div>
+      {/* <div className="header_top"></div> */}
       <div className="header_items">
         <div className="header_item">
           <Link to="/" className="link">
-            <img className="header_logo" src="video_yellow.png" alt="film" />
+            <img className="header_logo" src="video_lime.png" alt="film" />
           </Link>
           <Link to="/" className="link">
             <h1 className="header_title">Film Archive</h1>
@@ -42,7 +42,7 @@ function Header(props) {
         </div>
       </div>
       <NavBar />
-      <div className="header_bottom"></div>
+      {/* <div className="header_bottom"></div> */}
     </div>
   );
 }

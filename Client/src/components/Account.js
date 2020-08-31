@@ -85,11 +85,8 @@ function Account(props) {
               </Link>
             </MenuItem>
 
-            <MenuItem
-              onClick={handleSignOut}
-              // style={{ backgroundColor: "rgb(226, 226, 226)" }}
-            >
-              <Link to="/signout" className="link">
+            <MenuItem onClick={handleSignOut}>
+              <Link to="/signin" className="link">
                 Sign Out
               </Link>
             </MenuItem>

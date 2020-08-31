@@ -10,7 +10,7 @@
 .header_top {
   width: full-width;
   height: 5px;
-  background-color: #fcba03;
+  background-color: #aeea00;
 }
 
 .header_item {
@@ -29,6 +29,6 @@
 
 .header_bottom {
   width: full-width;
-  height: 40px;
-  background-color: #fcba03;
+  height: 3px;
+  background-color: #aeea00;
 }
