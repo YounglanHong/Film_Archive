@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { addReview } from "../../../action/movieAction";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
@@ -13,9 +13,11 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles({
   input_title: {
     margin: "50px 30px 20px 30px",
+    backgroundColor: "white",
   },
   input_text: {
     margin: "0px 30px 10px 30px",
+    backgroundColor: "white",
   },
   button: { margin: "10px 30px 0px 30px" },
 });
@@ -77,7 +79,7 @@ export default function PostReview(props) {
         <div className="postreview_container">
           <TextField
             label="Title"
-            variant="outlined"
+            variant="filled"
             value={title}
             onChange={handleTitle}
             className={classes.input_title}

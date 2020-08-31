@@ -7,6 +7,10 @@
   margin: 30px;
 }
 
+.movie_list_title {
+  color: white;
+}
+
 .list_items {
   margin: 10px;
   display: flex;
