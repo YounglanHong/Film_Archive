@@ -8,11 +8,12 @@
 .navbar_item {
   text-decoration: none;
   color: #aeea00;
+  font-size: 14pt;
   font-family: "Oswald", sans-serif;
 }
 
 .navbar_item:hover {
-  color: #f4ff81;
+  color: #e1ef40;
 }
 
 .navbar_expand {

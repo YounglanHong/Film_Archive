@@ -136,16 +136,16 @@ export default function Home(props) {
 
   return (
     <div className="Home">
-      <div className="movie_list">
-        <h2>NowPlaying Movies</h2>
+      <div className="movie_list" style={{ marginTop: "50px" }}>
+        <h3 className="movie_list_title">NowPlaying Movies</h3>
         {nowPlayingResultMap(nowPlaying)}
       </div>
       <div className="movie_list">
-        <h2>Popular Movies</h2>
+        <h3 className="movie_list_title">Popular Movies</h3>
         {popularResultMap(popular)}
       </div>
       <div className="movie_list">
-        <h2>Top Rated Movies</h2>
+        <h3 className="movie_list_title">Top Rated Movies</h3>
         {topRatedResultMap(topRated)}
       </div>
     </div>

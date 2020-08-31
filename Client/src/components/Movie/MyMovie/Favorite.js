@@ -38,7 +38,7 @@ export default function Favorite(props) {
                 <Link
                   to={link_path}
                   // className="link"
-                  className="mymovie_list"
+                  className="mymovie_list_favor"
                 >
                   {favorMovie.title}
                 </Link>

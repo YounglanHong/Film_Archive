@@ -9,13 +9,21 @@ import { ThemeProvider } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import "../../../styles/review.css";
+
 //style
 const useStyles = makeStyles({
   input_title: {
     margin: "50px 30px 20px 30px",
+    backgroundColor: "white",
+    border: "1px solid white",
+    borderRadius: "0.1em",
   },
   input_text: {
     margin: "0px 30px 10px 30px",
+    backgroundColor: "white",
+    border: "1px solid white",
+    borderRadius: "0.1em",
   },
   button: { margin: "10px 30px 0px 30px" },
 });
@@ -71,13 +79,13 @@ export default function PostReview(props) {
 
   return (
     <div className="PostReview">
-      <h1>Review</h1>
+      <h1>Post Review</h1>
       {/* <p>글자수 제한: 100자(띄어쓰기 포함)</p> */}
       <ThemeProvider theme={theme}>
         <div className="postreview_container">
           <TextField
             label="Title"
-            variant="outlined"
+            variant="filled"
             value={title}
             onChange={handleTitle}
             className={classes.input_title}
