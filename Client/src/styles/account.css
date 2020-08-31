@@ -1,0 +1,16 @@
+.account_logo {
+  color: #aeea00;
+  padding-bottom: 10px;
+}
+
+.account_name {
+  font-weight: bold;
+}
+
+.account_email {
+  color: grey;
+}
+
+/* .signout {
+  background-color: rgb(226, 226, 226);
+} */

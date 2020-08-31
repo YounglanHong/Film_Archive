@@ -1,0 +1,32 @@
+.SignIn {
+  margin: 100px;
+}
+
+.signin_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signin_container p {
+  color: #c6ff00;
+  background-color: #bdbdbd;
+  margin-left: 10px;
+  padding: 0px 5px 0px 5px;
+}
+
+.signin_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signin_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 50px 50px 30px 50px;
+  border: 1px solid #f5f5f5;
+  border-radius: 0.2em;
+}
