@@ -17,24 +17,27 @@ export default function Review(props) {
 
   let [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    let isUnmount = false;
-    // Review data 호출
-    dispatch(getReview({ reviewer }))
-      .then((res) => {
-        if (isUnmount) {
-          if (res.payload.reviews) {
-            setReviews(res.payload.reviews);
+  useEffect(
+    () => {
+      let isUnmount = false;
+      // Review data 호출
+      dispatch(getReview({ reviewer }))
+        .then((res) => {
+          if (isUnmount) {
+            if (res.payload.reviews) {
+              setReviews(res.payload.reviews);
+            }
           }
-        }
-      })
-      .catch((err) => {
-        setReviews(null);
-      });
-    return () => {
-      isUnmount = true;
-    };
-  }, [dispatch, reviewer, reviews]);
+        })
+        .catch((err) => {
+          setReviews(null);
+        });
+      return () => {
+        isUnmount = true;
+      };
+    },
+    [] /*[dispatch, reviewer, reviews]*/
+  );
 
   return (
     <div className="Review">
@@ -61,11 +64,13 @@ export default function Review(props) {
                 image,
                 review,
               } = reviewItem;
+
               return (
                 <Grid item lg={3} md={4} sm={6} xs={12} key={_id}>
                   {reviewItem ? (
                     <ReviewCard
-                      key={_id}
+                      // key={_id} //!
+                      _id={_id} //* 고유한 review _id
                       createdAt={createdAt}
                       movieId={movieId}
                       title={title}

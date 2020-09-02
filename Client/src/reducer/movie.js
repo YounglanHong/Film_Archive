@@ -46,7 +46,7 @@ export default function (state = {}, action) {
         ...state,
         reviewData: state.reviewData.filter((review) =>
           action.payload.result
-            ? review.movieId !== action.payload.result.movieId
+            ? review._id !== action.payload.result._id
             : null
         ),
       };

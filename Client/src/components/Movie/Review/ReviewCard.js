@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -10,6 +10,7 @@ import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+// import EditIcon from '@material-ui/icons/Edit';
 
 import { deleteReview } from "../../../action/movieAction";
 
@@ -18,18 +19,13 @@ import "../../../styles/review.css";
 
 export default function ReviewCard(props) {
   const dispatch = useDispatch();
-  let [imageSrc, setImageSrc] = useState("");
-  let [date, setDate] = useState("");
 
   //? Props form Review Component
-  const { createdAt, movieId, title, image, review, reviewer } = props;
+  const { _id, createdAt, movieId, title, image, review, reviewer } = props;
+
+  // review date
   let newDate = new Date(createdAt);
   let reviewDate = newDate.toDateString();
-
-  useEffect(() => {
-    setImageSrc(`${IMAGE_URL}w1280/${image}`);
-    setDate(reviewDate);
-  }, [setImageSrc, image, reviewDate]);
 
   function handleDeleteReview(e) {
     // 새로고침 방지
@@ -38,6 +34,7 @@ export default function ReviewCard(props) {
     let body = {
       reviewer: reviewer,
       movieId: movieId,
+      _id: _id,
     };
     dispatch(deleteReview(body)).then((res) => {
       console.log(res);
@@ -54,12 +51,13 @@ export default function ReviewCard(props) {
 
   return (
     <div className="ReviewCards">
+      {console.log(props)}
       {movieId ? (
         <Card className="review_card" style={{ minHeight: "30vw" }}>
           <Link to={link_path} className="link">
             <CardMedia
               className="review_image"
-              src={imageSrc}
+              src={`${IMAGE_URL}w1280/${image}`}
               component="img"
             />
           </Link>
@@ -91,7 +89,7 @@ export default function ReviewCard(props) {
                 color="textSecondary"
                 className="review_createdAt"
               >
-                {date}
+                {reviewDate}
               </Typography>
             </div>
           </CardContent>

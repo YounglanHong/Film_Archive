@@ -29,6 +29,7 @@ router.post("/deleteReview", (req, res) => {
   Review.findOneAndDelete({
     reviewer: req.body.reviewer,
     movieId: req.body.movieId,
+    _id: req.body._id,
   }).exec((err, result) => {
     if (err) {
       return res.status(400).json({ success: false, err });
@@ -46,6 +47,25 @@ router.post("/getReviews", (req, res) => {
     return res.status(200).json({ success: true, reviews });
   });
 });
+
+//* review 수정
+
+// router.get("/editReview", (req, res) => {
+//   Review.findOneAndUpdate();
+// });
+
+// router.get("/signout", auth, (req, res) => {
+//   User.findOneAndUpdate(
+//     {
+//       _id: req.user._id,
+//     },
+//     { token: "" },
+//     (err, user) => {
+//       if (err) return res.json({ success: false, err });
+//       return res.status(200).send({ success: true });
+//     }
+//   );
+// });
 
 //=============================================
 //                Favorite
