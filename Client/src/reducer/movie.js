@@ -8,6 +8,7 @@ import {
   DELETE_FAV,
   DELETE_WATCHED,
   DELETE_REVIEW,
+  EDIT_REVIEW,
 } from "../action/movieAction";
 
 // let initialState = {
@@ -40,8 +41,8 @@ export default function (state = {}, action) {
     case GET_WATCHED:
       return { ...state, watchedData: action.payload.watchedMovies };
     case DELETE_REVIEW:
-      console.log(state.reviewData);
-      console.log(action.payload);
+      // console.log(state.reviewData);
+      // console.log(action.payload);
       return {
         ...state,
         reviewData: state.reviewData.filter((review) =>
@@ -50,6 +51,19 @@ export default function (state = {}, action) {
             : null
         ),
       };
+
+    case EDIT_REVIEW:
+      let edited = action.payload.editedReview;
+      return {
+        ...state,
+        reviewData: state.reviewData.map((review, i) => {
+          if (review._id === edited._id) {
+            return edited;
+          }
+          return review;
+        }),
+      };
+
     case DELETE_FAV:
       return {
         ...state,

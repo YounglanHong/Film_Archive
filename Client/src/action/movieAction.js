@@ -4,6 +4,7 @@ import axios from "axios";
 export const GET_REVIEW = "GET_REVIEW";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const DELETE_REVIEW = "DELETE_REVIEW";
+export const EDIT_REVIEW = "EDIT_REVIEW";
 export const GET_FAV = "GET_FAV";
 export const ADD_FAV = "ADD_FAV";
 export const DELETE_FAV = "DELETE_FAV";
@@ -38,13 +39,24 @@ export function getReview(reviewer) {
   };
 }
 
-//* favorite 삭제
+//* review 삭제
 export function deleteReview(reviewInfo) {
   const reviewData = axios
     .post("/api/movies/deleteReview", reviewInfo)
     .then((res) => res.data);
   return {
     type: DELETE_REVIEW,
+    payload: reviewData,
+  };
+}
+
+//* review 수정
+export function editReview(editedReview) {
+  const reviewData = axios
+    .post("/api/movies/editReview", editedReview)
+    .then((res) => res.data);
+  return {
+    type: EDIT_REVIEW,
     payload: reviewData,
   };
 }

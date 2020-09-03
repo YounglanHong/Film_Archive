@@ -50,22 +50,18 @@ router.post("/getReviews", (req, res) => {
 
 //* review 수정
 
-// router.get("/editReview", (req, res) => {
-//   Review.findOneAndUpdate();
-// });
-
-// router.get("/signout", auth, (req, res) => {
-//   User.findOneAndUpdate(
-//     {
-//       _id: req.user._id,
-//     },
-//     { token: "" },
-//     (err, user) => {
-//       if (err) return res.json({ success: false, err });
-//       return res.status(200).send({ success: true });
-//     }
-//   );
-// });
+router.post("/editReview", (req, res) => {
+  Review.findOneAndUpdate(
+    { _id: req.body._id },
+    { review: req.body.review },
+    { new: true }
+  ).exec((err, editedReview) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+    return res.status(200).json({ success: true, editedReview });
+  });
+});
 
 //=============================================
 //                Favorite

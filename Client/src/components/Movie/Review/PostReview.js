@@ -65,7 +65,10 @@ export default function PostReview(props) {
       review: review,
     };
     dispatch(addReview(body)).then((res) => {
-      console.log(res);
+      if (res) {
+        props.history.push("/review");
+        // console.log(res);
+      }
     });
   }
 

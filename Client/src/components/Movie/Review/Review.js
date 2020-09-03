@@ -36,7 +36,7 @@ export default function Review(props) {
         isUnmount = true;
       };
     },
-    [] /*[dispatch, reviewer, reviews]*/
+    [dispatch, reviewer, reviews] /*[]*/
   );
 
   return (
