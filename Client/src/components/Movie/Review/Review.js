@@ -65,7 +65,7 @@ export default function Review(props) {
                 <Grid item lg={3} md={4} sm={6} xs={12} key={_id}>
                   {reviewItem ? (
                     <ReviewCard
-                      key={_id}
+                      // key={_id} //!
                       createdAt={createdAt}
                       movieId={movieId}
                       title={title}

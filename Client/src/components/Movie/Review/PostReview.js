@@ -9,6 +9,8 @@ import { ThemeProvider } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import "../../../styles/review.css";
+
 //style
 const useStyles = makeStyles({
   input_title: {
@@ -63,7 +65,10 @@ export default function PostReview(props) {
       review: review,
     };
     dispatch(addReview(body)).then((res) => {
-      console.log(res);
+      if (res) {
+        props.history.push("/review");
+        // console.log(res);
+      }
     });
   }
 
@@ -77,7 +82,7 @@ export default function PostReview(props) {
 
   return (
     <div className="PostReview">
-      <h1>Review</h1>
+      <h1>Post Review</h1>
       {/* <p>글자수 제한: 100자(띄어쓰기 포함)</p> */}
       <ThemeProvider theme={theme}>
         <div className="postreview_container">
