@@ -7,8 +7,8 @@ import reduxThunk from "redux-thunk";
 
 export default function configureStore(reducer, initialState = {}) {
   const storeEnhancers = compose(
-    applyMiddleware(reduxThunk, reduxPromise),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(reduxThunk, reduxPromise)
+    // ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   return createStore(reducer, initialState, storeEnhancers);
 }
