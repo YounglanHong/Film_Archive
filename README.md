@@ -33,7 +33,7 @@ npm start
 
 ### 2. 환경 설정
 
-### 클라이언트
+#### ⚙️ 클라이언트
 
 1. API 설정
 
@@ -72,7 +72,7 @@ module.exports = function (app) {
 };
 ```
 
-### 서버
+#### ⚙️ 서버
 1. 인증 secretKey 설정
 > userId + `secretKey` = token
 
@@ -92,3 +92,21 @@ module.exports = {
     "mongodb+srv:YOUR_CONNECTION_STRING",
 };
 ```
+
+***
+
+### 3. 사용 스택
+#### ⚒ Front-end
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" />
+<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+
+#### ⚒ Back-end
+<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+<img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" />
+
+
+#### ⚒ Database & Deploy
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+<img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
+
