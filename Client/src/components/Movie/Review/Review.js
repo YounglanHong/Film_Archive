@@ -64,7 +64,6 @@ export default function Review(props) {
                 image,
                 review,
               } = reviewItem;
-
               return (
                 <Grid item lg={3} md={4} sm={6} xs={12} key={_id}>
                   {reviewItem ? (
