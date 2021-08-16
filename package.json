@@ -27,6 +27,7 @@
     "simple-icons": "^5.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "tar": ">=4.4.15"
   }
 }
